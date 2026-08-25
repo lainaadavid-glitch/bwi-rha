@@ -1,12 +1,12 @@
 /* ============================================
    BWI-RHA EKITI STATE CHAPTER
    ADO LG
-   SUPABASE CONNECTED VERSION
+   SUPABASE
 ============================================ */
 
 
 /* ============================================
-   SUPABASE CONFIGURATION
+   SUPABASE CONFIG
 ============================================ */
 
 const SUPABASE_URL =
@@ -16,8 +16,6 @@ const SUPABASE_KEY =
     "sb_publishable_qBhmzkK4DDeZk1_pheHgRA_rNKHDKS7";
 
 
-/* Create Supabase client */
-
 const supabaseClient =
     window.supabase.createClient(
         SUPABASE_URL,
@@ -26,199 +24,472 @@ const supabaseClient =
 
 
 /* ============================================
-   ADO LG WARDS
+   WARDS
 ============================================ */
 
 const wards = [
-    { number: 1, name: "Ado A", area: "Idofin" },
-    { number: 2, name: "Ado B", area: "Inisa" },
-    { number: 3, name: "Ado C", area: "Idolofin" },
-    { number: 4, name: "Ado D", area: "Ijigbo" },
-    { number: 5, name: "Ado E", area: "Ijoka / Orereowu" },
-    { number: 6, name: "Ado F", area: "Okeyinmi" },
-    { number: 7, name: "Ado G", area: "Oke Ila" },
-    { number: 8, name: "Ado H", area: "Ereguru" },
-    { number: 9, name: "Ado I", area: "Dallimore" },
-    { number: 10, name: "Ado J", area: "Okesa" },
-    { number: 11, name: "Ado K", area: "Irona" },
-    { number: 12, name: "Ado L", area: "Igbehin" },
-    { number: 13, name: "Ado M", area: "Farm Settlement" }
+
+    {
+        number: 1,
+        name: "Ado A",
+        area: "Idofin"
+    },
+
+    {
+        number: 2,
+        name: "Ado B",
+        area: "Inisa"
+    },
+
+    {
+        number: 3,
+        name: "Ado C",
+        area: "Idolofin"
+    },
+
+    {
+        number: 4,
+        name: "Ado D",
+        area: "Ijigbo"
+    },
+
+    {
+        number: 5,
+        name: "Ado E",
+        area: "Ijoka / Orereowu"
+    },
+
+    {
+        number: 6,
+        name: "Ado F",
+        area: "Okeyinmi"
+    },
+
+    {
+        number: 7,
+        name: "Ado G",
+        area: "Oke Ila"
+    },
+
+    {
+        number: 8,
+        name: "Ado H",
+        area: "Ereguru"
+    },
+
+    {
+        number: 9,
+        name: "Ado I",
+        area: "Dallimore"
+    },
+
+    {
+        number: 10,
+        name: "Ado J",
+        area: "Okesa"
+    },
+
+    {
+        number: 11,
+        name: "Ado K",
+        area: "Irona"
+    },
+
+    {
+        number: 12,
+        name: "Ado L",
+        area: "Igbehin"
+    },
+
+    {
+        number: 13,
+        name: "Ado M",
+        area: "Farm Settlement"
+    }
+
 ];
 
 
 /* ============================================
-   ELEMENTS
+   DOM
 ============================================ */
 
 const wardsGrid =
-    document.getElementById("wardsGrid");
+    document.getElementById(
+        "wardsGrid"
+    );
+
 
 const wardDisplay =
-    document.getElementById("wardDisplay");
+    document.getElementById(
+        "wardDisplay"
+    );
+
 
 const wardSelect =
-    document.getElementById("ward");
+    document.getElementById(
+        "ward"
+    );
+
 
 const registrationForm =
-    document.getElementById("registrationForm");
+    document.getElementById(
+        "registrationForm"
+    );
+
 
 const formMessage =
-    document.getElementById("formMessage");
+    document.getElementById(
+        "formMessage"
+    );
+
 
 const menuButton =
-    document.getElementById("menuButton");
+    document.getElementById(
+        "menuButton"
+    );
+
 
 const mobileNav =
-    document.getElementById("mobileNav");
+    document.getElementById(
+        "mobileNav"
+    );
 
-const adminLoginButton =
-    document.getElementById("adminLoginButton");
+
+const lgExco =
+    document.getElementById(
+        "lgExco"
+    );
 
 
 /* ============================================
-   CREATE WARD BUTTONS
+   CREATE WARDS
 ============================================ */
 
 function createWardButtons() {
 
-    if (!wardsGrid) return;
+    if (!wardsGrid)
+        return;
+
 
     wardsGrid.innerHTML = "";
 
-    wards.forEach((ward) => {
 
-        const button =
-            document.createElement("button");
+    wards.forEach(
+        ward => {
 
-        button.type = "button";
+            const button =
+                document.createElement(
+                    "button"
+                );
 
-        button.className = "ward-button";
 
-        button.dataset.ward = ward.number;
+            button.type =
+                "button";
 
-        button.innerHTML = `
-            <strong>
-                ${ward.name}
-            </strong>
 
-            <span>
-                ${ward.area}
-            </span>
-        `;
+            button.className =
+                "ward-button";
 
-        button.addEventListener(
-            "click",
-            () => showWard(ward.number)
-        );
 
-        wardsGrid.appendChild(button);
+            button.dataset.ward =
+                ward.number;
 
-    });
+
+            button.innerHTML = `
+
+                <strong>
+                    ${escapeHTML(
+                        ward.name
+                    )}
+                </strong>
+
+                <span>
+                    ${escapeHTML(
+                        ward.area
+                    )}
+                </span>
+
+            `;
+
+
+            button.addEventListener(
+                "click",
+                () => showWard(
+                    ward.number
+                )
+            );
+
+
+            wardsGrid.appendChild(
+                button
+            );
+
+        }
+    );
+
 }
 
 
 /* ============================================
-   CREATE REGISTRATION WARD OPTIONS
+   WARD SELECT
 ============================================ */
 
 function createWardOptions() {
 
-    if (!wardSelect) return;
+    if (!wardSelect)
+        return;
+
 
     wardSelect.innerHTML = `
+
         <option value="">
             Select your ward
         </option>
+
     `;
 
-    wards.forEach((ward) => {
 
-        const option =
-            document.createElement("option");
+    wards.forEach(
+        ward => {
 
-        option.value = ward.number;
+            const option =
+                document.createElement(
+                    "option"
+                );
 
-        option.textContent =
-            `${ward.name} — ${ward.area}`;
 
-        wardSelect.appendChild(option);
+            option.value =
+                ward.number;
 
-    });
+
+            option.textContent =
+                `${ward.name} — ${ward.area}`;
+
+
+            wardSelect.appendChild(
+                option
+            );
+
+        }
+    );
+
 }
 
 
 /* ============================================
-   LOAD MEMBERS FOR WARD
+   REGISTRATION
 ============================================ */
 
-async function loadWardMembers(wardNumber) {
+if (registrationForm) {
 
-    const { data, error } =
-        await supabaseClient
-            .from("members")
-            .select(`
-                id,
-                full_name,
-                phone,
-                email,
-                gender,
-                address
-            `)
-            .eq("ward_id", wardNumber)
-            .order("created_at", {
-                ascending: false
-            });
+    registrationForm.addEventListener(
+        "submit",
+        async event => {
+
+            event.preventDefault();
 
 
-    if (error) {
-
-        console.error(
-            "Member loading error:",
-            error
-        );
-
-        return [];
-
-    }
-
-    return data || [];
-}
+            const submitButton =
+                registrationForm.querySelector(
+                    ".submit-button"
+                );
 
 
-/* ============================================
-   LOAD WARD EXCO
-============================================ */
+            const fullName =
+                document
+                    .getElementById(
+                        "fullName"
+                    )
+                    .value
+                    .trim();
 
-async function loadWardExco(wardNumber) {
 
-    const { data, error } =
-        await supabaseClient
-            .from("ward_exco")
-            .select(`
-                id,
-                position,
-                member_id,
-                members (
-                    id,
-                    full_name
+            const phone =
+                document
+                    .getElementById(
+                        "phone"
+                    )
+                    .value
+                    .trim();
+
+
+            const bankName =
+                document
+                    .getElementById(
+                        "bankName"
+                    )
+                    .value;
+
+
+            const accountNumber =
+                document
+                    .getElementById(
+                        "accountNumber"
+                    )
+                    .value
+                    .trim();
+
+
+            const ward =
+                document
+                    .getElementById(
+                        "ward"
+                    )
+                    .value;
+
+
+            const address =
+                document
+                    .getElementById(
+                        "address"
+                    )
+                    .value
+                    .trim();
+
+
+            /* VALIDATION */
+
+            if (
+                !fullName ||
+                !phone ||
+                !bankName ||
+                !accountNumber ||
+                !ward ||
+                !address
+            ) {
+
+                showMessage(
+                    "Please complete all required fields.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (
+                !/^\d{10}$/.test(
+                    accountNumber
                 )
-            `)
-            .eq("ward_id", wardNumber)
-            .order("id");
+            ) {
+
+                showMessage(
+                    "Account number must contain exactly 10 digits.",
+                    "error"
+                );
+
+                return;
+
+            }
 
 
-    if (error) {
+            /* SUBMITTING */
 
-        console.error(
-            "EXCO loading error:",
-            error
-        );
+            if (submitButton) {
 
-        return [];
+                submitButton.disabled =
+                    true;
 
-    }
+                submitButton.textContent =
+                    "Submitting...";
 
-    return data || [];
+            }
+
+
+            try {
+
+                const { error } =
+                    await supabaseClient
+                        .from("members")
+                        .insert({
+
+                            full_name:
+                                fullName,
+
+                            phone:
+                                phone,
+
+                            bank_name:
+                                bankName,
+
+                            account_number:
+                                accountNumber,
+
+                            ward_id:
+                                Number(ward),
+
+                            address:
+                                address,
+
+                            status:
+                                "pending"
+
+                        });
+
+
+                if (error) {
+
+                    console.error(
+                        error
+                    );
+
+                    showMessage(
+                        "Registration failed: " +
+                        error.message,
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                showMessage(
+                    "Registration submitted successfully. Your application is awaiting admin approval.",
+                    "success"
+                );
+
+
+                registrationForm.reset();
+
+
+                createWardOptions();
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    error
+                );
+
+
+                showMessage(
+                    "Something went wrong. Please try again.",
+                    "error"
+                );
+
+            }
+
+            finally {
+
+                if (submitButton) {
+
+                    submitButton.disabled =
+                        false;
+
+                    submitButton.textContent =
+                        "Submit Registration";
+
+                }
+
+            }
+
+        }
+    );
+
 }
 
 
@@ -226,42 +497,58 @@ async function loadWardExco(wardNumber) {
    SHOW WARD
 ============================================ */
 
-async function showWard(wardNumber) {
+async function showWard(
+    wardNumber
+) {
 
     const ward =
         wards.find(
             item =>
-                item.number === Number(wardNumber)
+                item.number ===
+                Number(wardNumber)
         );
 
-    if (!ward || !wardDisplay) return;
+
+    if (
+        !ward ||
+        !wardDisplay
+    )
+        return;
 
 
-    /* Active button */
+    /* ACTIVE BUTTON */
 
     document
-        .querySelectorAll(".ward-button")
-        .forEach(button => {
+        .querySelectorAll(
+            ".ward-button"
+        )
+        .forEach(
+            button => {
 
-            button.classList.remove("active");
+                button.classList.remove(
+                    "active"
+                );
 
-        });
+            }
+        );
 
 
-    const selectedButton =
+    const activeButton =
         document.querySelector(
             `.ward-button[data-ward="${ward.number}"]`
         );
 
 
-    if (selectedButton) {
+    if (activeButton) {
 
-        selectedButton.classList.add("active");
+        activeButton.classList.add(
+            "active"
+        );
 
     }
 
 
-    /* Loading */
+    /* LOADING */
 
     wardDisplay.innerHTML = `
 
@@ -272,11 +559,13 @@ async function showWard(wardNumber) {
             </div>
 
             <h3>
-                Loading ${ward.name}...
+                Loading ${escapeHTML(
+                    ward.name
+                )}...
             </h3>
 
             <p>
-                Getting members and EXCO information.
+                Loading approved members.
             </p>
 
         </div>
@@ -284,120 +573,141 @@ async function showWard(wardNumber) {
     `;
 
 
-    /* Load database */
+    /* MEMBERS */
 
-    const [
-        members,
-        exco
-    ] = await Promise.all([
-
-        loadWardMembers(ward.number),
-
-        loadWardExco(ward.number)
-
-    ]);
-
-
-    /* EXCO */
-
-    const excoHTML =
-        exco.map(item => {
-
-            const person =
-                item.members?.full_name;
-
-            return `
-
-                <div class="exco-row">
-
-                    <span>
-                        ${escapeHTML(item.position)}
-                    </span>
-
-                    <strong>
-                        ${
-                            person
-                                ? escapeHTML(person)
-                                : "Not Assigned"
-                        }
-                    </strong>
-
-                </div>
-
-            `;
-
-        }).join("");
+    const {
+        data: members,
+        error
+    } =
+        await supabaseClient
+            .from("members")
+            .select(
+                "id, full_name, phone"
+            )
+            .eq(
+                "ward_id",
+                ward.number
+            )
+            .eq(
+                "status",
+                "approved"
+            )
+            .order(
+                "full_name",
+                {
+                    ascending: true
+                }
+            );
 
 
-    /* Members */
+    if (error) {
 
-    let membersHTML = "";
+        console.error(
+            error
+        );
 
 
-    if (members.length === 0) {
+        wardDisplay.innerHTML = `
 
-        membersHTML = `
+            <div class="empty-ward">
 
-            <div class="members-empty">
-
-                <div>
-                    👥
+                <div class="empty-icon">
+                    ⚠️
                 </div>
 
                 <h3>
-                    No members yet
+                    Unable to load members
                 </h3>
 
                 <p>
-                    No registered members have been
-                    assigned to this ward yet.
+                    ${escapeHTML(
+                        error.message
+                    )}
                 </p>
 
             </div>
 
         `;
 
-    } else {
-
-        membersHTML =
-            members.map(member => {
-
-                return `
-
-                    <div class="member-card">
-
-                        <div class="member-avatar">
-                            ${getInitials(member.full_name)}
-                        </div>
-
-                        <div class="member-info">
-
-                            <h3>
-                                ${escapeHTML(member.full_name)}
-                            </h3>
-
-                            <p>
-                                ${escapeHTML(member.phone)}
-                            </p>
-
-                            ${
-                                member.email
-                                    ? `<p>${escapeHTML(member.email)}</p>`
-                                    : ""
-                            }
-
-                        </div>
-
-                    </div>
-
-                `;
-
-            }).join("");
+        return;
 
     }
 
 
-    /* Final ward page */
+    let membersHTML = "";
+
+
+    if (
+        !members ||
+        members.length === 0
+    ) {
+
+        membersHTML = `
+
+            <div class="members-empty">
+
+                <div class="empty-icon">
+                    👥
+                </div>
+
+                <h3>
+                    No approved members yet
+                </h3>
+
+                <p>
+                    Members approved by the
+                    administrator will appear here.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+    else {
+
+        membersHTML =
+            members
+                .map(
+                    member => `
+
+                        <div class="member-card">
+
+                            <div class="member-avatar">
+
+                                ${getInitials(
+                                    member.full_name
+                                )}
+
+                            </div>
+
+                            <div class="member-info">
+
+                                <h3>
+                                    ${escapeHTML(
+                                        member.full_name
+                                    )}
+                                </h3>
+
+                                <p>
+                                    ${escapeHTML(
+                                        member.phone
+                                    )}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    `
+                )
+                .join("");
+
+    }
+
+
+    /* DISPLAY */
 
     wardDisplay.innerHTML = `
 
@@ -410,14 +720,19 @@ async function showWard(wardNumber) {
                 </span>
 
                 <h3>
-                    ${escapeHTML(ward.name)}
+                    ${escapeHTML(
+                        ward.name
+                    )}
                 </h3>
 
                 <p>
-                    ${escapeHTML(ward.area)}
+                    ${escapeHTML(
+                        ward.area
+                    )}
                 </p>
 
             </div>
+
 
             <div class="member-count">
 
@@ -436,35 +751,13 @@ async function showWard(wardNumber) {
 
         <div class="ward-content">
 
-            <div class="ward-exco">
+            <h4>
+                Approved Members
+            </h4>
 
-                <h4>
-                    Ward EXCO
-                </h4>
+            <div class="members-list">
 
-                <div class="exco-list">
-
-                    ${
-                        excoHTML ||
-                        "<p>No EXCO records found.</p>"
-                    }
-
-                </div>
-
-            </div>
-
-
-            <div class="ward-members">
-
-                <h4>
-                    Registered Members
-                </h4>
-
-                <div class="members-list">
-
-                    ${membersHTML}
-
-                </div>
+                ${membersHTML}
 
             </div>
 
@@ -472,193 +765,148 @@ async function showWard(wardNumber) {
 
     `;
 
+}
 
-    wardDisplay.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
-    });
+
+/* ============================================
+   LOAD LG EXCO
+============================================ */
+
+async function loadLGExco() {
+
+    if (!lgExco)
+        return;
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("lg_exco")
+            .select(`
+                id,
+                position,
+                member_id,
+                members (
+                    full_name
+                )
+            `)
+            .order(
+                "id",
+                {
+                    ascending: true
+                }
+            );
+
+
+    if (error) {
+
+        console.error(
+            "LG EXCO:",
+            error
+        );
+
+
+        lgExco.innerHTML = `
+
+            <div class="loading-card">
+
+                Unable to load LG leadership.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    if (!data || data.length === 0) {
+
+        lgExco.innerHTML = `
+
+            <div class="loading-card">
+
+                LG leadership has not been
+                assigned yet.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    lgExco.innerHTML =
+        data
+            .map(
+                item => {
+
+                    const name =
+                        item.members
+                            ?.full_name ||
+                        "Not Assigned";
+
+
+                    return `
+
+                        <div class="exco-card">
+
+                            <div class="exco-icon">
+                                👑
+                            </div>
+
+                            <div class="position">
+
+                                ${escapeHTML(
+                                    item.position
+                                )}
+
+                            </div>
+
+                            <h3>
+
+                                ${escapeHTML(
+                                    name
+                                )}
+
+                            </h3>
+
+                        </div>
+
+                    `;
+
+                }
+            )
+            .join("");
 
 }
 
 
 /* ============================================
-   MEMBER REGISTRATION
+   MESSAGE
 ============================================ */
 
-if (registrationForm) {
-
-    registrationForm.addEventListener(
-        "submit",
-        async function(event) {
-
-            event.preventDefault();
-
-
-            const submitButton =
-                registrationForm.querySelector(
-                    ".submit-button"
-                );
-
-
-            const fullName =
-                document
-                    .getElementById("fullName")
-                    .value
-                    .trim();
-
-
-            const phone =
-                document
-                    .getElementById("phone")
-                    .value
-                    .trim();
-
-
-            const email =
-                document
-                    .getElementById("email")
-                    .value
-                    .trim();
-
-
-            const gender =
-                document
-                    .getElementById("gender")
-                    .value;
-
-
-            const ward =
-                document
-                    .getElementById("ward")
-                    .value;
-
-
-            const address =
-                document
-                    .getElementById("address")
-                    .value
-                    .trim();
-
-
-            if (
-                !fullName ||
-                !phone ||
-                !ward ||
-                !address
-            ) {
-
-                showFormMessage(
-                    "Please complete all required fields.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            /* Disable button */
-
-            if (submitButton) {
-
-                submitButton.disabled = true;
-
-                submitButton.textContent =
-                    "Submitting...";
-
-            }
-
-
-            /* Insert into Supabase */
-
-            const { error } =
-                await supabaseClient
-                    .from("members")
-                    .insert({
-
-                        full_name: fullName,
-
-                        phone: phone,
-
-                        email:
-                            email || null,
-
-                        gender:
-                            gender || null,
-
-                        address: address,
-
-                        ward_id:
-                            Number(ward)
-
-                    });
-
-
-            if (error) {
-
-                console.error(
-                    "Registration error:",
-                    error
-                );
-
-
-                showFormMessage(
-                    "Registration failed: " +
-                    error.message,
-                    "error"
-                );
-
-
-            } else {
-
-                showFormMessage(
-                    "Registration successful! Welcome to BWI-RHA Ado LG.",
-                    "success"
-                );
-
-
-                registrationForm.reset();
-
-                createWardOptions();
-
-            }
-
-
-            /* Enable button */
-
-            if (submitButton) {
-
-                submitButton.disabled = false;
-
-                submitButton.textContent =
-                    "Submit Registration";
-
-            }
-
-        }
-    );
-
-}
-
-
-/* ============================================
-   FORM MESSAGE
-============================================ */
-
-function showFormMessage(
+function showMessage(
     message,
     type
 ) {
 
-    if (!formMessage) return;
+    if (!formMessage)
+        return;
+
 
     formMessage.textContent =
         message;
 
-    formMessage.style.color =
-        type === "success"
-            ? "#087f3e"
-            : "#c62828";
+
+    formMessage.className =
+        "form-message " +
+        type;
 
 }
 
@@ -667,7 +915,10 @@ function showFormMessage(
    MOBILE MENU
 ============================================ */
 
-if (menuButton && mobileNav) {
+if (
+    menuButton &&
+    mobileNav
+) {
 
     menuButton.addEventListener(
         "click",
@@ -683,76 +934,95 @@ if (menuButton && mobileNav) {
 
     mobileNav
         .querySelectorAll("a")
-        .forEach(link => {
+        .forEach(
+            link => {
 
-            link.addEventListener(
-                "click",
-                () => {
+                link.addEventListener(
+                    "click",
+                    () => {
 
-                    mobileNav.classList.remove(
-                        "active"
-                    );
+                        mobileNav.classList.remove(
+                            "active"
+                        );
 
-                }
-            );
+                    }
+                );
 
-        });
+            }
+        );
 
 }
 
 
 /* ============================================
-   ADMIN BUTTON
+   YEAR
 ============================================ */
 
-if (adminLoginButton) {
-
-    adminLoginButton.addEventListener(
-        "click",
-        () => {
-
-            alert(
-                "Admin Login will be connected to Supabase Auth next."
-            );
-
-        }
+const currentYear =
+    document.getElementById(
+        "currentYear"
     );
 
+
+if (currentYear) {
+
+    currentYear.textContent =
+        new Date().getFullYear();
+
 }
 
 
 /* ============================================
-   SECURITY / DISPLAY HELPERS
+   SECURITY HELPERS
 ============================================ */
 
-function escapeHTML(value) {
+function escapeHTML(
+    value
+) {
 
-    if (value === null ||
-        value === undefined) {
-
-        return "";
-
-    }
-
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+    return String(
+        value ?? ""
+    )
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
 
 
-function getInitials(name) {
+function getInitials(
+    name
+) {
 
-    if (!name) return "?";
+    if (!name)
+        return "?";
+
 
     return name
         .trim()
         .split(/\s+/)
         .slice(0, 2)
-        .map(word => word[0])
+        .map(
+            word =>
+                word.charAt(0)
+        )
         .join("")
         .toUpperCase();
 
@@ -767,6 +1037,9 @@ createWardButtons();
 
 createWardOptions();
 
+loadLGExco();
+
+
 console.log(
-    "BWI-RHA Ado LG + Supabase loaded."
+    "BWI-RHA Ado LG website loaded."
 );
