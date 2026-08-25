@@ -1,96 +1,114 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>BWI-RHA Ekiti State Chapter | Ado LG</title>
+    <title>
+        BWI-RHA Ekiti State Chapter | Ado LG
+    </title>
+
+    <meta
+        name="description"
+        content="BWI-RHA Ekiti State Chapter, Ado Local Government."
+    >
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+    <!-- =========================================
+         HEADER
+    ========================================== -->
 
-    <header class="header">
+    <header class="site-header">
 
-        <div class="logo">
-            <div class="logo-mark">B</div>
+        <div class="container header-inner">
 
-            <div class="logo-text">
-                <strong>BWI-RHA</strong>
-                <span>EKITI STATE CHAPTER</span>
-            </div>
+            <a href="#home" class="logo">
+
+                <div class="logo-mark">
+                    BWI
+                </div>
+
+                <div class="logo-text">
+                    <strong>BWI-RHA</strong>
+                    <span>EKITI STATE CHAPTER</span>
+                </div>
+
+            </a>
+
+
+            <button
+                id="menuButton"
+                class="menu-button"
+                aria-label="Open menu"
+            >
+                ☰
+            </button>
+
+
+            <nav id="mobileNav" class="main-nav">
+
+                <a href="#home">Home</a>
+
+                <a href="#wards">Wards</a>
+
+                <a href="#register">Register</a>
+
+                <a href="#exco">LG EXCO</a>
+
+                <a
+                    href="#"
+                    id="adminLoginButton"
+                >
+                    Admin
+                </a>
+
+            </nav>
+
         </div>
-
-        <nav class="desktop-nav">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#wards">Wards</a>
-            <a href="#register">Register</a>
-            <a href="#admin">Admin</a>
-        </nav>
-
-        <button class="menu-button" id="menuButton">
-            ☰
-        </button>
 
     </header>
 
 
-    <!-- ================= MOBILE NAV ================= -->
-
-    <div class="mobile-nav" id="mobileNav">
-
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#wards">Wards</a>
-        <a href="#register">Register</a>
-        <a href="#admin">Admin</a>
-
-    </div>
-
-
-    <!-- ================= HERO ================= -->
+    <!-- =========================================
+         HERO
+    ========================================== -->
 
     <main>
 
-        <section class="hero" id="home">
+        <section id="home" class="hero">
 
-            <div class="hero-content">
+            <div class="container hero-content">
 
                 <div class="hero-badge">
-                    ADO LOCAL GOVERNMENT
+                    BWI-RHA EKITI STATE CHAPTER
                 </div>
 
                 <h1>
-                    BWI-RHA
+                    ADO LOCAL GOVERNMENT
                 </h1>
-
-                <h2>
-                    EKITI STATE CHAPTER
-                </h2>
-
-                <h3>
-                    ADO LG
-                </h3>
 
                 <p>
                     Welcome to the official platform of
-                    BWI-RHA Ekiti State Chapter, Ado Local Government.
-                    Connect, register, discover your ward and participate
-                    in building a stronger community.
+                    BWI-RHA Ekiti State Chapter, Ado LG.
                 </p>
 
                 <div class="hero-buttons">
 
-                    <a href="#register" class="button button-white">
+                    <a
+                        href="#register"
+                        class="btn btn-primary"
+                    >
                         Register Now
                     </a>
 
-                    <a href="#wards" class="button button-outline">
+                    <a
+                        href="#wards"
+                        class="btn btn-secondary"
+                    >
                         Explore Wards
                     </a>
 
@@ -101,130 +119,83 @@
         </section>
 
 
-        <!-- ================= ABOUT ================= -->
+        <!-- =========================================
+             ABOUT
+        ========================================== -->
 
-        <section class="section about" id="about">
+        <section class="section about-section">
 
-            <div class="section-heading">
+            <div class="container">
 
-                <span>ABOUT US</span>
+                <div class="section-heading">
 
-                <h2>
-                    Building Stronger Communities
-                </h2>
+                    <span>ABOUT US</span>
 
-                <p>
-                    BWI-RHA Ekiti State Chapter, Ado LG,
-                    provides a platform for members to connect,
-                    participate and contribute meaningfully
-                    to their communities.
-                </p>
-
-            </div>
-
-
-            <div class="feature-grid">
-
-                <article class="feature-card">
-
-                    <div class="feature-icon">
-                        🤝
-                    </div>
-
-                    <h3>
-                        Connect
-                    </h3>
+                    <h2>
+                        BWI-RHA EKITI STATE CHAPTER
+                    </h2>
 
                     <p>
-                        Connect with members across the
-                        13 wards of Ado Local Government.
+                        ADO LOCAL GOVERNMENT
                     </p>
 
-                </article>
+                </div>
 
 
-                <article class="feature-card">
+                <div class="about-grid">
 
-                    <div class="feature-icon">
-                        📝
+                    <div class="info-card">
+
+                        <div class="card-icon">
+                            👥
+                        </div>
+
+                        <h3>
+                            Membership
+                        </h3>
+
+                        <p>
+                            Register as a member and
+                            connect with your ward.
+                        </p>
+
                     </div>
 
-                    <h3>
-                        Register
-                    </h3>
 
-                    <p>
-                        Register your details and become
-                        part of the BWI-RHA community.
-                    </p>
+                    <div class="info-card">
 
-                </article>
+                        <div class="card-icon">
+                            🗺️
+                        </div>
 
+                        <h3>
+                            13 Wards
+                        </h3>
 
-                <article class="feature-card">
+                        <p>
+                            Find your ward and view
+                            approved members.
+                        </p>
 
-                    <div class="feature-icon">
-                        🌱
                     </div>
 
-                    <h3>
-                        Participate
-                    </h3>
 
-                    <p>
-                        Participate in initiatives that
-                        strengthen our community.
-                    </p>
+                    <div class="info-card">
 
-                </article>
+                        <div class="card-icon">
+                            🤝
+                        </div>
 
-            </div>
+                        <h3>
+                            Community
+                        </h3>
 
-        </section>
+                        <p>
+                            Connect with members and
+                            leadership across Ado LG.
+                        </p>
 
-
-        <!-- ================= WARDS ================= -->
-
-        <section class="section wards-section" id="wards">
-
-            <div class="section-heading">
-
-                <span>ADO LOCAL GOVERNMENT</span>
-
-                <h2>
-                    Wards & Community Directory
-                </h2>
-
-                <p>
-                    Select a ward to view its EXCOs and registered members.
-                </p>
-
-            </div>
-
-
-            <div class="wards-grid" id="wardsGrid">
-
-                <!-- Wards are generated by JavaScript -->
-
-            </div>
-
-
-            <div class="ward-display" id="wardDisplay">
-
-                <div class="empty-ward">
-
-                    <div class="empty-icon">
-                        🏛️
                     </div>
-
-                    <h3>
-                        Select a Ward
-                    </h3>
-
-                    <p>
-                        Choose one of the 13 wards above
-                        to view its information.
-                    </p>
 
                 </div>
 
@@ -233,188 +204,328 @@
         </section>
 
 
-        <!-- ================= REGISTRATION ================= -->
+        <!-- =========================================
+             WARDS
+        ========================================== -->
 
-        <section class="section registration-section" id="register">
+        <section
+            id="wards"
+            class="section wards-section"
+        >
 
-            <div class="section-heading">
+            <div class="container">
 
-                <span>JOIN BWI-RHA</span>
+                <div class="section-heading">
 
-                <h2>
-                    Member Registration
-                </h2>
+                    <span>OUR WARDS</span>
 
-                <p>
-                    Register your details to become part
-                    of the Ado LG community.
-                </p>
+                    <h2>
+                        ADO LG WARDS
+                    </h2>
 
-            </div>
+                    <p>
+                        Select a ward to view approved
+                        members and ward leadership.
+                    </p>
+
+                </div>
 
 
-            <div class="registration-card">
+                <div
+                    id="wardsGrid"
+                    class="wards-grid"
+                >
+                    <!-- JavaScript creates wards here -->
+                </div>
 
-                <form id="registrationForm">
 
-                    <div class="form-grid">
+                <div
+                    id="wardDisplay"
+                    class="ward-display"
+                >
 
-                        <div class="form-group">
+                    <div class="empty-ward">
 
-                            <label for="fullName">
-                                Full Name *
-                            </label>
-
-                            <input
-                                type="text"
-                                id="fullName"
-                                name="fullName"
-                                placeholder="Enter your full name"
-                                required
-                            >
-
+                        <div class="empty-icon">
+                            🗺️
                         </div>
 
+                        <h3>
+                            Select Your Ward
+                        </h3>
 
-                        <div class="form-group">
-
-                            <label for="phone">
-                                Phone Number *
-                            </label>
-
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                placeholder="Enter phone number"
-                                required
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="email">
-                                Email Address
-                            </label>
-
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="Enter email address"
-                            >
-
-                        </div>
-
-
-                        <div class="form-group">
-
-                            <label for="gender">
-                                Gender
-                            </label>
-
-                            <select id="gender" name="gender">
-
-                                <option value="">
-                                    Select gender
-                                </option>
-
-                                <option value="Male">
-                                    Male
-                                </option>
-
-                                <option value="Female">
-                                    Female
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="form-group full-width">
-
-                            <label for="ward">
-                                Select Your Ward *
-                            </label>
-
-                            <select id="ward" name="ward" required>
-
-                                <option value="">
-                                    Select your ward
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="form-group full-width">
-
-                            <label for="address">
-                                Address *
-                            </label>
-
-                            <input
-                                type="text"
-                                id="address"
-                                name="address"
-                                placeholder="Enter your address"
-                                required
-                            >
-
-                        </div>
+                        <p>
+                            Choose one of the 13 wards
+                            above to view its information.
+                        </p>
 
                     </div>
 
-
-                    <button
-                        type="submit"
-                        class="submit-button"
-                    >
-                        Submit Registration
-                    </button>
-
-
-                    <div
-                        id="formMessage"
-                        class="form-message"
-                    ></div>
-
-                </form>
+                </div>
 
             </div>
 
         </section>
 
 
-        <!-- ================= ADMIN ================= -->
+        <!-- =========================================
+             LG EXCO
+        ========================================== -->
 
-        <section class="admin-section" id="admin">
+        <section
+            id="exco"
+            class="section exco-section"
+        >
 
-            <div class="admin-content">
+            <div class="container">
 
-                <span>
-                    SECURE ADMIN AREA
-                </span>
+                <div class="section-heading">
 
-                <h2>
-                    Ado LG Administration
-                </h2>
+                    <span>LEADERSHIP</span>
 
-                <p>
-                    Authorized administrators can manage
-                    members, wards and EXCO information.
-                </p>
+                    <h2>
+                        ADO LG EXCO
+                    </h2>
 
-                <button
-                    class="button button-white"
-                    id="adminLoginButton"
+                    <p>
+                        Local Government Executive
+                        Committee.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="lgExco"
+                    class="lg-exco-grid"
                 >
-                    Admin Login
-                </button>
+
+                    <div class="loading-card">
+                        Loading LG leadership...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             REGISTRATION
+        ========================================== -->
+
+        <section
+            id="register"
+            class="section registration-section"
+        >
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span>
+                        EKITI STATE WOMEN OF INFLUENCE
+                    </span>
+
+                    <h2>
+                        ADO LG
+                    </h2>
+
+                    <p>
+                        Member Registration Form
+                    </p>
+
+                </div>
+
+
+                <div class="registration-card">
+
+                    <form id="registrationForm">
+
+                        <div class="form-grid">
+
+
+                            <!-- NAME -->
+
+                            <div class="form-group full-width">
+
+                                <label for="fullName">
+                                    Name *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="fullName"
+                                    name="fullName"
+                                    placeholder="Enter your full name"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- PHONE -->
+
+                            <div class="form-group">
+
+                                <label for="phone">
+                                    Phone No. *
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    placeholder="Enter phone number"
+                                    autocomplete="tel"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- BANK -->
+
+                            <div class="form-group">
+
+                                <label for="bankName">
+                                    Bank Name *
+                                </label>
+
+                                <select
+                                    id="bankName"
+                                    name="bankName"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Bank
+                                    </option>
+
+                                    <option>Access Bank</option>
+                                    <option>Citibank</option>
+                                    <option>Ecobank</option>
+                                    <option>Fidelity Bank</option>
+                                    <option>First Bank</option>
+                                    <option>FCMB</option>
+                                    <option>Globus Bank</option>
+                                    <option>GTBank</option>
+                                    <option>Heritage Bank</option>
+                                    <option>Jaiz Bank</option>
+                                    <option>Keystone Bank</option>
+                                    <option>Moniepoint</option>
+                                    <option>OPay</option>
+                                    <option>PalmPay</option>
+                                    <option>Polaris Bank</option>
+                                    <option>Premium Trust Bank</option>
+                                    <option>Providus Bank</option>
+                                    <option>Stanbic IBTC</option>
+                                    <option>Sterling Bank</option>
+                                    <option>UBA</option>
+                                    <option>Union Bank</option>
+                                    <option>Unity Bank</option>
+                                    <option>Wema Bank</option>
+                                    <option>Zenith Bank</option>
+                                    <option>Other</option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- ACCOUNT -->
+
+                            <div class="form-group">
+
+                                <label for="accountNumber">
+                                    Account No. *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="accountNumber"
+                                    name="accountNumber"
+                                    placeholder="10-digit account number"
+                                    inputmode="numeric"
+                                    maxlength="10"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- WARD -->
+
+                            <div class="form-group">
+
+                                <label for="ward">
+                                    Select Your Ward *
+                                </label>
+
+                                <select
+                                    id="ward"
+                                    name="ward"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select your ward
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- ADDRESS -->
+
+                            <div class="form-group full-width">
+
+                                <label for="address">
+                                    Address *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="address"
+                                    name="address"
+                                    placeholder="Enter your address"
+                                    autocomplete="street-address"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="privacy-notice">
+
+                            🔒 Your bank and account information
+                            is private and is only intended for
+                            authorized administrators.
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="submit-button"
+                        >
+                            Submit Registration
+                        </button>
+
+
+                        <div
+                            id="formMessage"
+                            class="form-message"
+                        ></div>
+
+                    </form>
+
+                </div>
 
             </div>
 
@@ -423,26 +534,47 @@
     </main>
 
 
-    <!-- ================= FOOTER ================= -->
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
 
-    <footer>
+    <footer class="site-footer">
 
-        <div class="footer-logo">
-            BWI-RHA
+        <div class="container footer-content">
+
+            <div>
+
+                <strong>
+                    BWI-RHA EKITI STATE CHAPTER
+                </strong>
+
+                <p>
+                    ADO LOCAL GOVERNMENT
+                </p>
+
+            </div>
+
+
+            <p class="copyright">
+
+                © <span id="currentYear"></span>
+                BWI-RHA Ado LG.
+                All rights reserved.
+
+            </p>
+
         </div>
 
-        <p>
-            Ekiti State Chapter — Ado LG
-        </p>
-
-        <p class="copyright">
-            © 2026 BWI-RHA. All Rights Reserved.
-        </p>
-
     </footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="script.js"></script>
+
+
+    <!-- SUPABASE -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- YOUR JAVASCRIPT -->
+
+    <script src="script.js"></script>
 
 </body>
 </html>
-
