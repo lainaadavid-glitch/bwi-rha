@@ -1,9 +1,28 @@
-```javascript
 /* ============================================
    BWI-RHA EKITI STATE CHAPTER
    ADO LG
-   MAIN JAVASCRIPT
+   SUPABASE CONNECTED VERSION
 ============================================ */
+
+
+/* ============================================
+   SUPABASE CONFIGURATION
+============================================ */
+
+const SUPABASE_URL =
+    "https://xfjrmgendmmpnumsbjte.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_qBhmzkK4DDeZk1_pheHgRA_rNKHDKS7";
+
+
+/* Create Supabase client */
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
 /* ============================================
@@ -11,107 +30,34 @@
 ============================================ */
 
 const wards = [
-    {
-        number: 1,
-        name: "Ado A",
-        area: "Idofin"
-    },
-    {
-        number: 2,
-        name: "Ado B",
-        area: "Inisa"
-    },
-    {
-        number: 3,
-        name: "Ado C",
-        area: "Idolofin"
-    },
-    {
-        number: 4,
-        name: "Ado D",
-        area: "Ijigbo"
-    },
-    {
-        number: 5,
-        name: "Ado E",
-        area: "Ijoka / Orereowu"
-    },
-    {
-        number: 6,
-        name: "Ado F",
-        area: "Okeyinmi"
-    },
-    {
-        number: 7,
-        name: "Ado G",
-        area: "Oke Ila"
-    },
-    {
-        number: 8,
-        name: "Ado H",
-        area: "Ereguru"
-    },
-    {
-        number: 9,
-        name: "Ado I",
-        area: "Dallimore"
-    },
-    {
-        number: 10,
-        name: "Ado J",
-        area: "Okesa"
-    },
-    {
-        number: 11,
-        name: "Ado K",
-        area: "Irona"
-    },
-    {
-        number: 12,
-        name: "Ado L",
-        area: "Igbehin"
-    },
-    {
-        number: 13,
-        name: "Ado M",
-        area: "Farm Settlement"
-    }
+    { number: 1, name: "Ado A", area: "Idofin" },
+    { number: 2, name: "Ado B", area: "Inisa" },
+    { number: 3, name: "Ado C", area: "Idolofin" },
+    { number: 4, name: "Ado D", area: "Ijigbo" },
+    { number: 5, name: "Ado E", area: "Ijoka / Orereowu" },
+    { number: 6, name: "Ado F", area: "Okeyinmi" },
+    { number: 7, name: "Ado G", area: "Oke Ila" },
+    { number: 8, name: "Ado H", area: "Ereguru" },
+    { number: 9, name: "Ado I", area: "Dallimore" },
+    { number: 10, name: "Ado J", area: "Okesa" },
+    { number: 11, name: "Ado K", area: "Irona" },
+    { number: 12, name: "Ado L", area: "Igbehin" },
+    { number: 13, name: "Ado M", area: "Farm Settlement" }
 ];
 
 
 /* ============================================
-   WARD EXCO POSITIONS
+   ELEMENTS
 ============================================ */
 
-const wardExcoPositions = [
-    "Ward Coordinator",
-    "Deputy Ward Coordinator",
-    "Secretary",
-    "Mobilization Officer",
-    "Women Empowerment Officer",
-    "Media/Publicity Officer",
-    "Welfare Officer",
-    "Polling Unit Officer"
-];
+const wardsGrid =
+    document.getElementById("wardsGrid");
 
+const wardDisplay =
+    document.getElementById("wardDisplay");
 
-/* ============================================
-   LG EXCO POSITIONS
-============================================ */
-
-const lgExcoPositions = [
-    "LG Coordinator",
-    "Deputy LG Coordinator"
-];
-
-
-/* ============================================
-   GET ELEMENTS
-============================================ */
-
-const wardsGrid = document.getElementById("wardsGrid");
-const wardDisplay = document.getElementById("wardDisplay");
-const wardSelect = document.getElementById("ward");
+const wardSelect =
+    document.getElementById("ward");
 
 const registrationForm =
     document.getElementById("registrationForm");
@@ -141,7 +87,8 @@ function createWardButtons() {
 
     wards.forEach((ward) => {
 
-        const button = document.createElement("button");
+        const button =
+            document.createElement("button");
 
         button.type = "button";
 
@@ -171,12 +118,18 @@ function createWardButtons() {
 
 
 /* ============================================
-   CREATE WARD SELECT OPTIONS
+   CREATE REGISTRATION WARD OPTIONS
 ============================================ */
 
 function createWardOptions() {
 
     if (!wardSelect) return;
+
+    wardSelect.innerHTML = `
+        <option value="">
+            Select your ward
+        </option>
+    `;
 
     wards.forEach((ward) => {
 
@@ -195,65 +148,256 @@ function createWardOptions() {
 
 
 /* ============================================
+   LOAD MEMBERS FOR WARD
+============================================ */
+
+async function loadWardMembers(wardNumber) {
+
+    const { data, error } =
+        await supabaseClient
+            .from("members")
+            .select(`
+                id,
+                full_name,
+                phone,
+                email,
+                gender,
+                address
+            `)
+            .eq("ward_id", wardNumber)
+            .order("created_at", {
+                ascending: false
+            });
+
+
+    if (error) {
+
+        console.error(
+            "Member loading error:",
+            error
+        );
+
+        return [];
+
+    }
+
+    return data || [];
+}
+
+
+/* ============================================
+   LOAD WARD EXCO
+============================================ */
+
+async function loadWardExco(wardNumber) {
+
+    const { data, error } =
+        await supabaseClient
+            .from("ward_exco")
+            .select(`
+                id,
+                position,
+                member_id,
+                members (
+                    id,
+                    full_name
+                )
+            `)
+            .eq("ward_id", wardNumber)
+            .order("id");
+
+
+    if (error) {
+
+        console.error(
+            "EXCO loading error:",
+            error
+        );
+
+        return [];
+
+    }
+
+    return data || [];
+}
+
+
+/* ============================================
    SHOW WARD
 ============================================ */
 
-function showWard(wardNumber) {
+async function showWard(wardNumber) {
 
     const ward =
         wards.find(
-            (item) => item.number === Number(wardNumber)
+            item =>
+                item.number === Number(wardNumber)
         );
 
     if (!ward || !wardDisplay) return;
 
 
-    /* Remove active state */
+    /* Active button */
 
     document
         .querySelectorAll(".ward-button")
-        .forEach((button) => {
+        .forEach(button => {
 
             button.classList.remove("active");
 
         });
 
 
-    /* Activate selected ward */
-
     const selectedButton =
         document.querySelector(
             `.ward-button[data-ward="${ward.number}"]`
         );
 
+
     if (selectedButton) {
+
         selectedButton.classList.add("active");
+
     }
 
 
-    /* Create EXCO placeholders */
+    /* Loading */
+
+    wardDisplay.innerHTML = `
+
+        <div class="empty-ward">
+
+            <div class="empty-icon">
+                ⏳
+            </div>
+
+            <h3>
+                Loading ${ward.name}...
+            </h3>
+
+            <p>
+                Getting members and EXCO information.
+            </p>
+
+        </div>
+
+    `;
+
+
+    /* Load database */
+
+    const [
+        members,
+        exco
+    ] = await Promise.all([
+
+        loadWardMembers(ward.number),
+
+        loadWardExco(ward.number)
+
+    ]);
+
+
+    /* EXCO */
 
     const excoHTML =
-        wardExcoPositions
-            .map((position) => {
+        exco.map(item => {
+
+            const person =
+                item.members?.full_name;
+
+            return `
+
+                <div class="exco-row">
+
+                    <span>
+                        ${escapeHTML(item.position)}
+                    </span>
+
+                    <strong>
+                        ${
+                            person
+                                ? escapeHTML(person)
+                                : "Not Assigned"
+                        }
+                    </strong>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+
+    /* Members */
+
+    let membersHTML = "";
+
+
+    if (members.length === 0) {
+
+        membersHTML = `
+
+            <div class="members-empty">
+
+                <div>
+                    👥
+                </div>
+
+                <h3>
+                    No members yet
+                </h3>
+
+                <p>
+                    No registered members have been
+                    assigned to this ward yet.
+                </p>
+
+            </div>
+
+        `;
+
+    } else {
+
+        membersHTML =
+            members.map(member => {
 
                 return `
-                    <div class="exco-row">
 
-                        <span>
-                            ${position}
-                        </span>
+                    <div class="member-card">
 
-                        <strong>
-                            Not Assigned
-                        </strong>
+                        <div class="member-avatar">
+                            ${getInitials(member.full_name)}
+                        </div>
+
+                        <div class="member-info">
+
+                            <h3>
+                                ${escapeHTML(member.full_name)}
+                            </h3>
+
+                            <p>
+                                ${escapeHTML(member.phone)}
+                            </p>
+
+                            ${
+                                member.email
+                                    ? `<p>${escapeHTML(member.email)}</p>`
+                                    : ""
+                            }
+
+                        </div>
 
                     </div>
+
                 `;
 
-            })
-            .join("");
+            }).join("");
 
+    }
+
+
+    /* Final ward page */
 
     wardDisplay.innerHTML = `
 
@@ -266,18 +410,25 @@ function showWard(wardNumber) {
                 </span>
 
                 <h3>
-                    ${ward.name}
+                    ${escapeHTML(ward.name)}
                 </h3>
 
                 <p>
-                    ${ward.area}
+                    ${escapeHTML(ward.area)}
                 </p>
 
             </div>
 
             <div class="member-count">
-                <strong>0</strong>
-                <span>Members</span>
+
+                <strong>
+                    ${members.length}
+                </strong>
+
+                <span>
+                    Members
+                </span>
+
             </div>
 
         </div>
@@ -293,7 +444,10 @@ function showWard(wardNumber) {
 
                 <div class="exco-list">
 
-                    ${excoHTML}
+                    ${
+                        excoHTML ||
+                        "<p>No EXCO records found.</p>"
+                    }
 
                 </div>
 
@@ -306,20 +460,9 @@ function showWard(wardNumber) {
                     Registered Members
                 </h4>
 
-                <div class="members-empty">
+                <div class="members-list">
 
-                    <div>
-                        👥
-                    </div>
-
-                    <h3>
-                        No members yet
-                    </h3>
-
-                    <p>
-                        Registered members for this ward
-                        will appear here.
-                    </p>
+                    ${membersHTML}
 
                 </div>
 
@@ -329,58 +472,32 @@ function showWard(wardNumber) {
 
     `;
 
+
     wardDisplay.scrollIntoView({
         behavior: "smooth",
         block: "center"
     });
-}
-
-
-/* ============================================
-   MOBILE MENU
-============================================ */
-
-if (menuButton && mobileNav) {
-
-    menuButton.addEventListener(
-        "click",
-        () => {
-
-            mobileNav.classList.toggle("active");
-
-        }
-    );
-
-
-    mobileNav
-        .querySelectorAll("a")
-        .forEach((link) => {
-
-            link.addEventListener(
-                "click",
-                () => {
-
-                    mobileNav.classList.remove("active");
-
-                }
-            );
-
-        });
 
 }
 
 
 /* ============================================
-   REGISTRATION FORM
+   MEMBER REGISTRATION
 ============================================ */
 
 if (registrationForm) {
 
     registrationForm.addEventListener(
         "submit",
-        function (event) {
+        async function(event) {
 
             event.preventDefault();
+
+
+            const submitButton =
+                registrationForm.querySelector(
+                    ".submit-button"
+                );
 
 
             const fullName =
@@ -440,37 +557,83 @@ if (registrationForm) {
             }
 
 
-            /*
-                SUPABASE WILL BE CONNECTED HERE.
+            /* Disable button */
 
-                The form will eventually send:
+            if (submitButton) {
 
-                full_name
-                phone
-                email
-                gender
-                ward
-                address
+                submitButton.disabled = true;
 
-                directly into the Supabase
-                members table.
-            */
+                submitButton.textContent =
+                    "Submitting...";
+
+            }
 
 
-            console.log({
-                fullName,
-                phone,
-                email,
-                gender,
-                ward,
-                address
-            });
+            /* Insert into Supabase */
+
+            const { error } =
+                await supabaseClient
+                    .from("members")
+                    .insert({
+
+                        full_name: fullName,
+
+                        phone: phone,
+
+                        email:
+                            email || null,
+
+                        gender:
+                            gender || null,
+
+                        address: address,
+
+                        ward_id:
+                            Number(ward)
+
+                    });
 
 
-            showFormMessage(
-                "Your registration form is working. Supabase connection will be added next.",
-                "success"
-            );
+            if (error) {
+
+                console.error(
+                    "Registration error:",
+                    error
+                );
+
+
+                showFormMessage(
+                    "Registration failed: " +
+                    error.message,
+                    "error"
+                );
+
+
+            } else {
+
+                showFormMessage(
+                    "Registration successful! Welcome to BWI-RHA Ado LG.",
+                    "success"
+                );
+
+
+                registrationForm.reset();
+
+                createWardOptions();
+
+            }
+
+
+            /* Enable button */
+
+            if (submitButton) {
+
+                submitButton.disabled = false;
+
+                submitButton.textContent =
+                    "Submit Registration";
+
+            }
 
         }
     );
@@ -482,21 +645,58 @@ if (registrationForm) {
    FORM MESSAGE
 ============================================ */
 
-function showFormMessage(message, type) {
+function showFormMessage(
+    message,
+    type
+) {
 
     if (!formMessage) return;
 
-    formMessage.textContent = message;
+    formMessage.textContent =
+        message;
 
-    if (type === "success") {
+    formMessage.style.color =
+        type === "success"
+            ? "#087f3e"
+            : "#c62828";
 
-        formMessage.style.color = "#087f3e";
+}
 
-    } else {
 
-        formMessage.style.color = "#c62828";
+/* ============================================
+   MOBILE MENU
+============================================ */
 
-    }
+if (menuButton && mobileNav) {
+
+    menuButton.addEventListener(
+        "click",
+        () => {
+
+            mobileNav.classList.toggle(
+                "active"
+            );
+
+        }
+    );
+
+
+    mobileNav
+        .querySelectorAll("a")
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    mobileNav.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+        });
 
 }
 
@@ -512,7 +712,7 @@ if (adminLoginButton) {
         () => {
 
             alert(
-                "Supabase Admin Login will be connected here."
+                "Admin Login will be connected to Supabase Auth next."
             );
 
         }
@@ -522,7 +722,45 @@ if (adminLoginButton) {
 
 
 /* ============================================
-   START WEBSITE
+   SECURITY / DISPLAY HELPERS
+============================================ */
+
+function escapeHTML(value) {
+
+    if (value === null ||
+        value === undefined) {
+
+        return "";
+
+    }
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+function getInitials(name) {
+
+    if (!name) return "?";
+
+    return name
+        .trim()
+        .split(/\s+/)
+        .slice(0, 2)
+        .map(word => word[0])
+        .join("")
+        .toUpperCase();
+
+}
+
+
+/* ============================================
+   START
 ============================================ */
 
 createWardButtons();
@@ -530,6 +768,5 @@ createWardButtons();
 createWardOptions();
 
 console.log(
-    "BWI-RHA Ado LG website loaded successfully."
+    "BWI-RHA Ado LG + Supabase loaded."
 );
-```
