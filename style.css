@@ -1,0 +1,895 @@
+```css
+/* ============================================
+   BWI-RHA EKITI STATE CHAPTER
+   ADO LG
+   GREEN + WHITE DESIGN
+============================================ */
+
+
+/* ================= RESET ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #123b24;
+    background: #ffffff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+
+/* ================= HEADER ================= */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 7%;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e1eee5;
+
+    box-shadow: 0 3px 15px rgba(0, 80, 30, 0.08);
+}
+
+
+/* ================= LOGO ================= */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-mark {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #087f3e;
+    color: #ffffff;
+
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.logo-text strong {
+    display: block;
+
+    color: #087f3e;
+
+    font-size: 20px;
+}
+
+.logo-text span {
+    display: block;
+
+    color: #66756b;
+
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+
+/* ================= DESKTOP NAV ================= */
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.desktop-nav a {
+    color: #173c27;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+.desktop-nav a:hover {
+    color: #087f3e;
+}
+
+
+/* ================= MOBILE BUTTON ================= */
+
+.menu-button {
+    display: none;
+
+    border: none;
+
+    background: #087f3e;
+    color: #ffffff;
+
+    width: 42px;
+    height: 42px;
+
+    border-radius: 7px;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+
+/* ================= MOBILE NAV ================= */
+
+.mobile-nav {
+    display: none;
+
+    position: sticky;
+    top: 75px;
+
+    z-index: 999;
+
+    background: #ffffff;
+
+    padding: 10px 7%;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.mobile-nav.active {
+    display: block;
+}
+
+.mobile-nav a {
+    display: block;
+
+    padding: 12px 0;
+
+    color: #087f3e;
+
+    font-weight: 600;
+
+    border-bottom: 1px solid #edf3ee;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+    min-height: 680px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 7%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #075f2e,
+            #087f3e,
+            #0b9149
+        );
+
+    color: #ffffff;
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Decorative circles */
+
+.hero::before,
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hero::before {
+    width: 400px;
+    height: 400px;
+
+    left: -180px;
+    top: -150px;
+}
+
+.hero::after {
+    width: 500px;
+    height: 500px;
+
+    right: -250px;
+    bottom: -250px;
+}
+
+
+/* Hero content */
+
+.hero-content {
+    max-width: 850px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.hero-badge {
+    display: inline-block;
+
+    padding: 8px 18px;
+
+    margin-bottom: 22px;
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    border-radius: 30px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 9vw, 95px);
+
+    line-height: 0.95;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+.hero h2 {
+    font-size: clamp(24px, 4vw, 42px);
+
+    letter-spacing: 3px;
+
+    margin-bottom: 8px;
+}
+
+.hero h3 {
+    font-size: 25px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 25px;
+
+    color: #d9f7e2;
+}
+
+.hero p {
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    font-size: 17px;
+
+    color: #f0fff4;
+}
+
+
+/* ================= BUTTONS ================= */
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin-top: 32px;
+}
+
+.button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 48px;
+
+    padding: 0 25px;
+
+    border-radius: 7px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.button-white {
+    background: #ffffff;
+
+    color: #087f3e;
+}
+
+.button-white:hover {
+    background: #e9f8ee;
+
+    transform: translateY(-2px);
+}
+
+.button-outline {
+    border: 2px solid #ffffff;
+
+    color: #ffffff;
+}
+
+.button-outline:hover {
+    background: #ffffff;
+
+    color: #087f3e;
+}
+
+
+/* ================= GENERAL SECTIONS ================= */
+
+.section {
+    padding: 95px 7%;
+}
+
+.section-heading {
+    max-width: 760px;
+
+    margin: 0 auto 55px;
+
+    text-align: center;
+}
+
+.section-heading > span {
+    color: #087f3e;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    margin: 10px 0 12px;
+
+    color: #123b24;
+
+    font-size: clamp(30px, 4vw, 42px);
+
+    line-height: 1.2;
+}
+
+.section-heading p {
+    color: #66756b;
+
+    font-size: 16px;
+}
+
+
+/* ================= FEATURES ================= */
+
+.feature-grid {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.feature-card {
+    padding: 35px 28px;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    border: 1px solid #e1eee5;
+
+    border-radius: 14px;
+
+    box-shadow: 0 8px 30px rgba(0, 80, 30, 0.06);
+
+    transition: 0.25s;
+}
+
+.feature-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow: 0 14px 35px rgba(0, 80, 30, 0.11);
+}
+
+.feature-icon {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: #e9f8ee;
+
+    font-size: 30px;
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+
+    color: #087f3e;
+
+    font-size: 21px;
+}
+
+.feature-card p {
+    color: #66756b;
+}
+
+
+/* ================= WARDS ================= */
+
+.wards-section {
+    background: #f4faf6;
+}
+
+.wards-grid {
+    max-width: 1100px;
+
+    margin: 0 auto 35px;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 15px;
+}
+
+.ward-button {
+    padding: 20px 12px;
+
+    border: 1px solid #c9dfcf;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #087f3e;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.ward-button strong {
+    display: block;
+
+    font-size: 18px;
+}
+
+.ward-button span {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #66756b;
+
+    font-size: 12px;
+}
+
+.ward-button:hover,
+.ward-button.active {
+    background: #087f3e;
+
+    border-color: #087f3e;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+}
+
+.ward-button:hover span,
+.ward-button.active span {
+    color: #e4f7e9;
+}
+
+
+/* ================= WARD DISPLAY ================= */
+
+.ward-display {
+    max-width: 1100px;
+
+    min-height: 250px;
+
+    margin: auto;
+
+    padding: 35px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1eee5;
+
+    border-radius: 14px;
+
+    box-shadow: 0 8px 30px rgba(0, 80, 30, 0.06);
+}
+
+.empty-ward {
+    text-align: center;
+
+    padding: 35px 10px;
+}
+
+.empty-icon {
+    font-size: 45px;
+
+    margin-bottom: 10px;
+}
+
+.empty-ward h3 {
+    color: #087f3e;
+
+    margin-bottom: 5px;
+}
+
+.empty-ward p {
+    color: #66756b;
+}
+
+
+/* ================= REGISTRATION ================= */
+
+.registration-section {
+    background: #ffffff;
+}
+
+.registration-card {
+    max-width: 950px;
+
+    margin: auto;
+
+    padding: 38px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1eee5;
+
+    border-radius: 14px;
+
+    box-shadow: 0 10px 35px rgba(0, 80, 30, 0.08);
+}
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    margin-bottom: 7px;
+
+    color: #173c27;
+
+    font-weight: 700;
+
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 14px;
+
+    border: 1px solid #cdded2;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #173c27;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #087f3e;
+
+    box-shadow: 0 0 0 3px rgba(8, 127, 62, 0.1);
+}
+
+.submit-button {
+    width: 100%;
+
+    height: 52px;
+
+    margin-top: 28px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #087f3e;
+
+    color: #ffffff;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.submit-button:hover {
+    background: #05652f;
+
+    transform: translateY(-1px);
+}
+
+.form-message {
+    margin-top: 15px;
+
+    text-align: center;
+
+    font-weight: 700;
+}
+
+
+/* ================= ADMIN ================= */
+
+.admin-section {
+    padding: 95px 7%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #075f2e,
+            #087f3e
+        );
+
+    text-align: center;
+
+    color: #ffffff;
+}
+
+.admin-content {
+    max-width: 700px;
+
+    margin: auto;
+}
+
+.admin-content > span {
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    color: #c9f1d4;
+}
+
+.admin-content h2 {
+    margin: 10px 0 12px;
+
+    font-size: clamp(30px, 5vw, 45px);
+}
+
+.admin-content p {
+    margin-bottom: 28px;
+
+    color: #e9f8ee;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    padding: 40px 7%;
+
+    background: #052713;
+
+    color: #ffffff;
+
+    text-align: center;
+}
+
+.footer-logo {
+    margin-bottom: 5px;
+
+    color: #8ce3a7;
+
+    font-size: 25px;
+
+    font-weight: 800;
+}
+
+footer p {
+    color: #b9cbbf;
+
+    margin: 4px;
+}
+
+footer .copyright {
+    margin-top: 15px;
+
+    font-size: 12px;
+
+    color: #82998a;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 850px) {
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .header {
+        padding: 12px 5%;
+    }
+
+    .section {
+        padding: 70px 5%;
+    }
+
+    .hero {
+        min-height: 620px;
+
+        padding: 70px 5%;
+    }
+
+    .hero h1 {
+        font-size: 58px;
+    }
+
+    .hero h2 {
+        font-size: 25px;
+
+        letter-spacing: 1px;
+    }
+
+    .hero h3 {
+        font-size: 20px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full-width {
+        grid-column: auto;
+    }
+
+    .registration-card {
+        padding: 22px;
+    }
+
+    .wards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ward-display {
+        padding: 22px;
+    }
+
+}
+
+
+@media (max-width: 400px) {
+
+    .logo-text strong {
+        font-size: 17px;
+    }
+
+    .logo-text span {
+        font-size: 8px;
+    }
+
+    .logo-mark {
+        width: 40px;
+        height: 40px;
+
+        font-size: 20px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .wards-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+```
