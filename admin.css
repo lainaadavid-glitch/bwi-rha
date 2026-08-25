@@ -1,0 +1,509 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f8f5;
+    color: #173b27;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* LOGIN */
+
+.login-page {
+    min-height: 100vh;
+
+    display: grid;
+
+    place-items: center;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #087f3e,
+            #05642f
+        );
+}
+
+.login-card {
+    width: min(420px, 100%);
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.2);
+}
+
+.login-logo {
+    width: 60px;
+    height: 60px;
+
+    display: grid;
+    place-items: center;
+
+    background: #087f3e;
+
+    color: white;
+
+    border-radius: 15px;
+
+    font-weight: 900;
+
+    margin-bottom: 20px;
+}
+
+.login-card h1 {
+    margin-bottom: 8px;
+}
+
+.login-card p {
+    color: #68776e;
+
+    margin-bottom: 25px;
+}
+
+.login-card label {
+    display: block;
+
+    margin: 15px 0 7px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+.login-card input {
+    width: 100%;
+
+    padding: 13px;
+
+    border:
+        1px solid #ccdcd2;
+
+    border-radius: 9px;
+
+    outline: none;
+}
+
+.login-card input:focus {
+    border-color: #087f3e;
+}
+
+.login-card button {
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 14px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    background: #087f3e;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#loginMessage {
+    margin-top: 15px;
+
+    text-align: center;
+
+    font-size: 13px;
+}
+
+
+/* HEADER */
+
+.admin-header {
+    height: 70px;
+
+    padding: 0 30px;
+
+    background: white;
+
+    border-bottom:
+        1px solid #dce9e0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.admin-header div {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.admin-header strong {
+    color: #087f3e;
+}
+
+.admin-header span {
+    font-size: 10px;
+
+    color: #718078;
+}
+
+.admin-header button {
+    border: 0;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    background: #eaf5ee;
+
+    color: #087f3e;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* CONTAINER */
+
+.admin-container {
+    width: min(
+        1200px,
+        calc(100% - 32px)
+    );
+
+    margin: auto;
+
+    padding: 45px 0;
+}
+
+.admin-title {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 30px;
+}
+
+.admin-title small,
+.section-top small {
+    color: #087f3e;
+
+    font-weight: 900;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+.admin-title h1 {
+    font-size: 38px;
+}
+
+.refresh-button {
+    padding: 11px 18px;
+
+    border: 1px solid #cfe1d5;
+
+    background: white;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+}
+
+
+/* STATS */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 16px;
+
+    margin-bottom: 35px;
+}
+
+.stat-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    border:
+        1px solid #dce9e0;
+}
+
+.stat-card span {
+    display: block;
+
+    color: #718078;
+
+    font-size: 13px;
+}
+
+.stat-card strong {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 32px;
+
+    color: #173b27;
+}
+
+.stat-card.pending strong {
+    color: #c47a00;
+}
+
+.stat-card.approved strong {
+    color: #087f3e;
+}
+
+.stat-card.rejected strong {
+    color: #b52b2b;
+}
+
+
+/* MEMBERS */
+
+.members-section {
+    background: white;
+
+    border:
+        1px solid #dce9e0;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+}
+
+.section-top {
+    padding: 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-bottom:
+        1px solid #e5eee8;
+}
+
+.section-top h2 {
+    margin-top: 3px;
+}
+
+.section-top select {
+    padding: 10px;
+
+    border:
+        1px solid #ccdcd2;
+
+    border-radius: 8px;
+}
+
+
+/* MEMBER */
+
+.members-container {
+    padding: 20px;
+}
+
+.member-row {
+    border:
+        1px solid #e0ebe4;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    margin-bottom: 12px;
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr 1fr 1fr 1fr auto;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+.member-name {
+    font-weight: 800;
+
+    color: #173b27;
+}
+
+.member-detail {
+    color: #65766c;
+
+    font-size: 13px;
+}
+
+.member-status {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    text-transform: uppercase;
+}
+
+.status-pending {
+    background: #fff4d9;
+
+    color: #a66a00;
+}
+
+.status-approved {
+    background: #e5f6eb;
+
+    color: #087f3e;
+}
+
+.status-rejected {
+    background: #fde9e9;
+
+    color: #ad2929;
+}
+
+
+/* ACTIONS */
+
+.actions {
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
+}
+
+.actions button {
+    border: 0;
+
+    padding: 8px 11px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+.approve {
+    background: #087f3e;
+
+    color: white;
+}
+
+.reject {
+    background: #fde7e7;
+
+    color: #a92828;
+}
+
+.delete {
+    background: #222;
+
+    color: white;
+}
+
+.loading,
+.empty {
+    text-align: center;
+
+    padding: 50px;
+
+    color: #718078;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .member-row {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .admin-header {
+        padding: 0 15px;
+    }
+
+    .admin-container {
+        width:
+            calc(100% - 20px);
+
+        padding: 25px 0;
+    }
+
+    .admin-title {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-top {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .section-top select {
+        width: 100%;
+    }
+
+}
