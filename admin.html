@@ -1,424 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>BWI-RHA Admin | Ado LG</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <style>
-        .admin-page {
-            min-height: 100vh;
-            background: #f4f8f5;
-            padding: 40px 20px;
-        }
-
-        .admin-container {
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .admin-header {
-            background: #087f3f;
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-        }
-
-        .admin-header h1 {
-            margin: 0 0 5px;
-        }
-
-        .admin-header p {
-            margin: 0;
-        }
-
-        .login-card,
-        .admin-card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,.08);
-            margin-bottom: 25px;
-        }
-
-        .login-card {
-            max-width: 500px;
-            margin: 60px auto;
-        }
-
-        .admin-card h2 {
-            color: #087f3f;
-            margin-top: 0;
-        }
-
-        .admin-input {
-            width: 100%;
-            padding: 13px;
-            margin: 8px 0 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-sizing: border-box;
-        }
-
-        .admin-button {
-            border: none;
-            padding: 11px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            margin: 3px;
-        }
-
-        .login-button,
-        .approve-button {
-            background: #087f3f;
-            color: white;
-        }
-
-        .reject-button {
-            background: #e6a700;
-            color: white;
-        }
-
-        .delete-button {
-            background: #c62828;
-            color: white;
-        }
-
-        .logout-button {
-            background: white;
-            color: #087f3f;
-            float: right;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .stat {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,.06);
-        }
-
-        .stat strong {
-            display: block;
-            font-size: 30px;
-            color: #087f3f;
-        }
-
-        .member-table-wrapper {
-            overflow-x: auto;
-        }
-
-        .member-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .member-table th,
-        .member-table td {
-            padding: 12px;
-            border-bottom: 1px solid #eee;
-            text-align: left;
-        }
-
-        .member-table th {
-            background: #087f3f;
-            color: white;
-        }
-
-        .status {
-            display: inline-block;
-            padding: 5px 9px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .status-pending {
-            background: #fff3cd;
-            color: #856404;
-        }
-
-        .status-approved {
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .status-rejected {
-            background: #f8d7da;
-            color: #721c24;
-        }
-
-        .message {
-            padding: 12px;
-            margin-top: 15px;
-            border-radius: 8px;
-            display: none;
-        }
-
-        .message.success {
-            display: block;
-            background: #d4edda;
-            color: #155724;
-        }
-
-        .message.error {
-            display: block;
-            background: #f8d7da;
-            color: #721c24;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        @media (max-width: 800px) {
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 500px) {
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .admin-page {
-                padding: 20px 10px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-<div class="admin-page">
-
-    <div class="admin-container">
-
-        <!-- LOGIN -->
 
-        <div id="loginSection" class="login-card">
+<meta charset="UTF-8">
 
-            <h1>🟢 BWI-RHA Admin</h1>
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-            <p>
-                BWI-RHA Ekiti State Chapter — Ado LG
-            </p>
+<title>
+    BWI-RHA Admin Dashboard | Ado LG
+</title>
 
-            <form id="loginForm">
+<link rel="stylesheet" href="style.css">
 
-                <label>Email</label>
+<style>
 
-                <input
-                    type="email"
-                    id="adminEmail"
-                    class="admin-input"
-                    placeholder="Admin email"
-                    required
-                >
+/* =========================================
+   ADMIN
+========================================= */
 
-                <label>Password</label>
+* {
+    box-sizing: border-box;
+}
 
-                <input
-                    type="password"
-                    id="adminPassword"
-                    class="admin-input"
-                    placeholder="Password"
-                    required
-                >
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f8f4;
+    color: #222;
+}
 
-                <button
-                    type="submit"
-                    class="admin-button login-button"
-                    style="width:100%;"
-                >
-                    Login
-                </button>
+.hidden {
+    display: none !important;
+}
 
-            </form>
+.admin-wrapper {
+    min-height: 100vh;
+}
 
-            <div id="loginMessage" class="message"></div>
 
-        </div>
+/* LOGIN */
 
+.login-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
 
-        <!-- DASHBOARD -->
+.login-card {
+    background: white;
+    width: 100%;
+    max-width: 430px;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0,0,0,.1);
+}
 
-        <div id="dashboard" class="hidden">
+.login-logo {
+    width: 70px;
+    height: 70px;
+    background: #087f3f;
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
 
-            <div class="admin-header">
+.login-card h1 {
+    color: #087f3f;
+    margin-bottom: 5px;
+}
 
-                <button
-                    id="logoutButton"
-                    class="admin-button logout-button"
-                >
-                    Logout
-                </button>
+.login-card p {
+    color: #666;
+}
 
-                <h1>
-                    BWI-RHA Admin Dashboard
-                </h1>
 
-                <p>
-                    Ekiti State Chapter — Ado LG
-                </p>
+/* INPUTS */
 
-            </div>
+.admin-input,
+.admin-select {
 
+    width: 100%;
 
-            <!-- STATISTICS -->
+    padding: 13px;
 
-            <div class="stats">
+    border: 1px solid #ccc;
 
-                <div class="stat">
-                    <strong id="totalCount">0</strong>
-                    Total Members
-                </div>
+    border-radius: 9px;
 
-                <div class="stat">
-                    <strong id="pendingCount">0</strong>
-                    Pending
-                </div>
+    margin-top: 7px;
 
-                <div class="stat">
-                    <strong id="approvedCount">0</strong>
-                    Approved
-                </div>
+    margin-bottom: 15px;
 
-                <div class="stat">
-                    <strong id="rejectedCount">0</strong>
-                    Rejected
-                </div>
+    background: white;
 
-            </div>
+    font-size: 15px;
 
+}
 
-            <!-- MEMBERS -->
+label {
+    font-weight: bold;
+}
 
-            <div class="admin-card">
 
-                <h2>Member Registrations</h2>
+/* BUTTONS */
 
-                <div id="adminMessage" class="message"></div>
+.admin-button {
 
-                <div class="member-table-wrapper">
+    border: none;
 
-                    <table class="member-table">
+    border-radius: 8px;
 
-                        <thead>
+    padding: 10px 15px;
 
-                            <tr>
-                                <th>Name</th>
-                                <th>Phone</th>
-                                <th>Bank</th>
-                                <th>Account</th>
-                                <th>Ward</th>
-                                <th>Address</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
+    cursor: pointer;
 
-                        </thead>
+    font-weight: bold;
 
-                        <tbody id="membersTable">
+}
 
-                            <tr>
-                                <td colspan="8">
-                                    Loading...
-                                </td>
-                            </tr>
+.admin-button:hover {
+    opacity: .85;
+}
 
-                        </tbody>
+.primary {
+    background: #087f3f;
+    color: white;
+}
 
-                    </table>
+.danger {
+    background: #c62828;
+    color: white;
+}
 
-                </div>
+.warning {
+    background: #e6a700;
+    color: white;
+}
 
-            </div>
+.secondary {
+    background: #e8eee9;
+    color: #087f3f;
+}
 
-        </div>
 
-    </div>
+/* HEADER */
 
-</div>
+.dashboard-header {
 
+    background: #087f3f;
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    color: white;
 
-<script>
+    padding: 20px;
 
-const SUPABASE_URL =
-    "https://xfjrmgendmmpnumsbjte.supabase.co";
+}
 
-const SUPABASE_KEY =
-    "sb_publishable_qBhmzkK4DDeZk1_pheHgRA_rNKHDKS7";
+.dashboard-header-inner {
 
-const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+    max-width: 1250px;
 
+    margin: auto;
 
-const loginSection =
-    document.getElementById("loginSection");
+    display: flex;
 
-const dashboard =
-    document.getElementById("dashboard");
+    justify-content: space-between;
 
-const loginForm =
-    document.getElementById("loginForm");
+    align-items: center;
 
-const membersTable =
-    document.getElementById("membersTable");
+}
 
+.dashboard-header h1 {
+    margin: 0;
+}
 
-const wards = [
-    "Ado A — Idofin",
-    "Ado B — Inisa",
-    "Ado C — Idolofin",
-    "Ado D — Ijigbo",
-    "Ado E — Ijoka / Orereowu",
-    "Ado F — Okeyinmi",
-    "Ado G — Oke Ila",
-    "Ado H — Ereguru",
-    "Ado I — Dallimore",
-    "Ado J — Okesa",
-    "Ado K — Irona",
-    "Ado L — Igbehin",
-    "Ado M — Farm Settlement"
-];
+.dashboard-header p {
+    margin: 5px 0 0;
+}
 
 
-function showMessage(element, text, type) {
+/* CONTENT */
 
-    element.textContent = text;
-    element.className =
-        "message " + type;
+.dashboard-content {
+
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding: 25px 15px;
 
 }
 
 
-function wardName(id) {
+/* STATS */
 
-    return wards[Number(id) - 1] ||
-        "Unknown Ward";
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+
+}
+
+.stat {
+
+    background: white;
+
+    border-radius: 14px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.05);
+
+}
+
+.stat strong {
+
+    display: block;
+
+    font-size: 30px;
+
+    color: #087f3f;
 
 }
 
 
-function escapeHTML(value) {
+/* TABS */
 
-   
+.tabs {
+
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+
+    flex-wrap: wrap;
+
+}
+
+.tab {
+
+    background: white;
+
+    border: 1px solid #ddd;
+
+    color: #087f3f;
+
+}
+
+.tab.active {
+
+    background: #087f3f;
+
+    color: white;
+
+}
+
+
+/* CARDS */
+
+.admin-card {
+
+    background: white;
+
+    border-radius: 15px;
+
+    padding: 22px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.05);
+
+}
+
+.admin-card h2 {
+
+    margin-top: 0;
+
+    color: #087f3f;
+
+}
+
+
+/* TABLE */
+
+.table
