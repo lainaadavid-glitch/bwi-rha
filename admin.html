@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BWI-RHA Ado LG | Admin</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <div id="loginPage" class="login-page">
+
+        <div class="login-card">
+
+            <div class="login-logo">
+                BWI
+            </div>
+
+            <h1>Admin Login</h1>
+
+            <p>
+                BWI-RHA Ekiti State Chapter
+                <br>
+                Ado LG
+            </p>
+
+            <form id="loginForm">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Admin email"
+                    required
+                >
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    required
+                >
+
+                <button type="submit">
+                    Login
+                </button>
+
+                <div id="loginMessage"></div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="dashboardPage"
+        class="dashboard-page hidden"
+    >
+
+        <header class="admin-header">
+
+            <div>
+
+                <strong>
+                    BWI-RHA
+                </strong>
+
+                <span>
+                    ADO LG ADMIN
+                </span>
+
+            </div>
+
+            <button id="logoutButton">
+                Logout
+            </button>
+
+        </header>
+
+
+        <main class="admin-container">
+
+            <div class="admin-title">
+
+                <div>
+
+                    <small>
+                        ADMINISTRATION
+                    </small>
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                </div>
+
+                <button
+                    id="refreshButton"
+                    class="refresh-button"
+                >
+                    ↻ Refresh
+                </button>
+
+            </div>
+
+
+            <!-- STATISTICS -->
+
+            <section class="stats-grid">
+
+                <div class="stat-card">
+
+                    <span>
+                        Total Members
+                    </span>
+
+                    <strong id="totalMembers">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card pending">
+
+                    <span>
+                        Pending
+                    </span>
+
+                    <strong id="pendingMembers">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card approved">
+
+                    <span>
+                        Approved
+                    </span>
+
+                    <strong id="approvedMembers">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="stat-card rejected">
+
+                    <span>
+                        Rejected
+                    </span>
+
+                    <strong id="rejectedMembers">
+                        0
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- MEMBERS -->
+
+            <section class="members-section">
+
+                <div class="section-top">
+
+                    <div>
+
+                        <small>
+                            MEMBERS
+                        </small>
+
+                        <h2>
+                            Registrations
+                        </h2>
+
+                    </div>
+
+
+                    <select id="statusFilter">
+
+                        <option value="all">
+                            All Members
+                        </option>
+
+                        <option value="pending">
+                            Pending
+                        </option>
+
+                        <option value="approved">
+                            Approved
+                        </option>
+
+                        <option value="rejected">
+                            Rejected
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div
+                    id="membersContainer"
+                    class="members-container"
+                >
+
+                    <div class="loading">
+                        Loading members...
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="admin.js"></script>
+
+</body>
+</html>
